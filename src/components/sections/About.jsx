@@ -3,13 +3,14 @@ import { RevealOnScroll } from "../RevealOnScroll";
 export const About = () => {
   const frontendSkills = [
     "React",
+    "Angular",
     "TypeScript",
     "TailwindCSS",
     "Bootstrap",
     "Figma",
   ];
 
-  const backendSkills = ["Java", "Python", "Golang", "PHP", "Node.js", "Express.js", "MongoDB", "PostgreSQL"];
+  const backendSkills = ["Java", "Python", "Golang", "PHP", "Node.js", "MongoDB", "PostgreSQL", "OracleSQL"];
 
   return (
     <section
@@ -25,13 +26,13 @@ export const About = () => {
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="text-gray-300 mb-6">
-            Hi, I’m Yassine Gourram, a passionate Software Engineer based near Milan, with a strong interest in software development and artificial intelligence. I earned my Bachelor’s degree in Computer Science from the University of Milan.
+            Hi, I’m Yassine Gourram, a passionate Software Engineer based near Milan. I earned my Bachelor’s degree in Computer Science from the University of Milan in 2025, with a thesis on a platooning system using DSRC and 5G technologies for autonomous driving, supported by an AI model.
               <br />
               <br />
-              My journey in tech began in childhood, when my curiosity was sparked by every new technological advancement. This led me to explore various fields, from mobile jailbreaking to networking. As I grew older, I discovered the areas that truly fascinated such as developing complex software systems and analyzing large-scale data to extract meaningful insights.
+              My journey in tech began in childhood, when my curiosity was sparked by every new technological advancement. This led me to explore various fields, from mobile jailbreaking to networking. As I grew older, I discovered the areas that truly fascinated me such as developing software systems and analyzing large-scale data to extract meaningful insights.
               <br />
               <br />
-              I am always eager to learn and explore new technologies. I thrive in collaborative environments, where I can acquire new skills and share my knowledge with others.
+              I am always eager to learn and explore new technologies.
               <br />
               <br />  
             </p>
@@ -77,17 +78,17 @@ export const About = () => {
                 <div>
                   <h4 className="font-semibold">
                     {" "}
-                    Software Engineer at PwC Italy (2025 - Present){" "}
+                    Software Engineer at PwC Italy (Apr 2025 -  Aug 2025){" "}
                   </h4>
                   <p>
-                    Work in progress..
+                    Contributed to the design and development of full-stack solutions for wealth management applications in the banking sector using Spring and Angular.
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold">
                     {" "}
-                    Thesis student at CONNETS LAB (Communication networks and Network science), UniMi (2024 - 2025){" "}
+                    Thesis student at CONNETS LAB (Communication networks and Network science), UniMi (Oct 2024 - Feb 2025){" "}
                   </h4>
                   <p>
                   Simulation and analysis of a platooning system for autonomous driving, evaluating the reliability of V2V
@@ -100,7 +101,7 @@ export const About = () => {
               <h3 className="text-xl font-bold mb-4"> Education </h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>
-                  <strong> B.S. in Computer Science </strong> - University of Milan
+                  <strong> B.S. in Computer Science </strong> - University of Milan (2025)
                 </li>
                 <li>
                   Relevant Coursework: Software Engineering, Algorithms and Data Structures, Database, Artificial intelligence, Statistics and Data Analysis.
