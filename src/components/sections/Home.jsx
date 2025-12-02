@@ -35,7 +35,7 @@ export const Home = () => {
               <a href="https://www.linkedin.com/in/yassine-gourram-68930424a/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="text-3xl text-white hover:text-orange-400 transition" />
               </a>
-              <a href="mailto:yassine.gourram02@gmail.com">
+              <a href="mailto:yassinegourram02@gmail.com">
                 <FaEnvelope className="text-3xl text-white hover:text-orange-400 transition" />
               </a>
               <a href={ cv } download>
