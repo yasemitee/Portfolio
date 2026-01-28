@@ -77,8 +77,7 @@ export const DATA = {
       description:
         'Research project investigating how LLMs behave as autonomous agents in negotiation. Analyzing emergent strategies like persuasion, concession, and deception in multi-agent scenarios.',
       tags: ['Python', 'LLMs', 'Multi-Agent Systems', 'NLP'],
-      link: '#',
-      isPrivate: true,
+      link: 'https://github.com/yasemitee/negotiation-arena',
       icon: Bot,
     },
     {
