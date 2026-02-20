@@ -12,10 +12,9 @@ interface Skills {
 
 interface SkillsSectionProps {
   skills: Skills;
-  isDark: boolean;
 }
 
-export default function SkillsSection({ skills, isDark }: SkillsSectionProps) {
+export default function SkillsSection({ skills }: SkillsSectionProps) {
   const skillGroups = [
     {
       title: 'Languages',
@@ -47,27 +46,21 @@ export default function SkillsSection({ skills, isDark }: SkillsSectionProps) {
     >
       <motion.h2
         variants={itemVariants}
-        className={`text-xs font-bold uppercase tracking-widest mb-10 flex items-center gap-3 ${
-          isDark ? 'text-neutral-500' : 'text-neutral-400'
-        }`}
+        className="text-xs font-bold uppercase tracking-widest mb-10 flex items-center gap-3 text-neutral-500"
       >
-        <span className="w-8 h-[1px] bg-current"></span> Core Skills
+        <span className="w-8 h-[1px] bg-current"></span> Skills
       </motion.h2>
 
       <div className="grid md:grid-cols-3 gap-10">
         {skillGroups.map((skillGroup, idx) => (
           <motion.div key={idx} variants={containerVariants}>
-            <h3
-              className={`text-sm font-bold mb-4 flex items-center gap-2 ${
-                isDark ? 'text-neutral-200' : 'text-neutral-800'
-              }`}
-            >
+            <h3 className="text-sm font-bold mb-4 flex items-center gap-2 text-neutral-200">
               <skillGroup.icon size={18} className={skillGroup.color} />{' '}
               {skillGroup.title}
             </h3>
             <div className="flex flex-wrap gap-2">
               {skillGroup.items.map((t) => (
-                <Badge key={t} text={t} isDark={isDark} />
+                <Badge key={t} text={t} />
               ))}
             </div>
           </motion.div>

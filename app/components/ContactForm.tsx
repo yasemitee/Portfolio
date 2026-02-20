@@ -2,11 +2,7 @@
 import { useState } from 'react';
 import { CheckCircle, Send, Loader2, AlertCircle } from 'lucide-react';
 
-interface ContactFormProps {
-  isDark: boolean;
-}
-
-export default function ContactForm({ isDark }: ContactFormProps) {
+export default function ContactForm() {
   const [status, setStatus] = useState<
     'idle' | 'submitting' | 'success' | 'error'
   >('idle');
@@ -40,34 +36,17 @@ export default function ContactForm({ isDark }: ContactFormProps) {
     }
   };
 
-  const inputClasses = `w-full px-4 py-3 rounded-lg outline-none transition-all duration-200 border ${
-    isDark
-      ? 'bg-neutral-800/50 border-neutral-700 text-neutral-200 focus:border-indigo-500 focus:bg-neutral-800'
-      : 'bg-white border-neutral-200 text-neutral-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10'
-  }`;
+  const inputClasses =
+    'w-full px-4 py-3 rounded-lg outline-none transition-all duration-200 border bg-neutral-800/50 border-neutral-700 text-neutral-200 focus:border-indigo-500 focus:bg-neutral-800';
 
   return (
-    <div
-      className={`w-full p-8 rounded-2xl border relative overflow-hidden ${
-        isDark
-          ? 'bg-neutral-900 border-neutral-800'
-          : 'bg-white border-neutral-200 shadow-xl shadow-neutral-200/40'
-      }`}
-    >
+    <div className="w-full p-8 rounded-2xl border relative overflow-hidden bg-neutral-900 border-neutral-800">
       <div className="relative z-10">
         <div className="mb-8">
-          <h3
-            className={`text-2xl font-bold mb-2 ${
-              isDark ? 'text-white' : 'text-neutral-900'
-            }`}
-          >
+          <h3 className="text-2xl font-bold mb-2 text-white">
             Get in Touch
           </h3>
-          <p
-            className={`text-sm ${
-              isDark ? 'text-neutral-400' : 'text-neutral-500'
-            }`}
-          >
+          <p className="text-sm text-neutral-400">
             Have a project in mind or just want to say hi? Send me a message
             below.
           </p>
@@ -76,11 +55,7 @@ export default function ContactForm({ isDark }: ContactFormProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label
-                className={`block text-xs font-bold uppercase tracking-wider mb-2 ${
-                  isDark ? 'text-neutral-500' : 'text-neutral-400'
-                }`}
-              >
+              <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-neutral-500">
                 Name
               </label>
               <input
@@ -95,11 +70,7 @@ export default function ContactForm({ isDark }: ContactFormProps) {
               />
             </div>
             <div>
-              <label
-                className={`block text-xs font-bold uppercase tracking-wider mb-2 ${
-                  isDark ? 'text-neutral-500' : 'text-neutral-400'
-                }`}
-              >
+              <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-neutral-500">
                 Email
               </label>
               <input
@@ -115,11 +86,7 @@ export default function ContactForm({ isDark }: ContactFormProps) {
             </div>
           </div>
           <div>
-            <label
-              className={`block text-xs font-bold uppercase tracking-wider mb-2 ${
-                isDark ? 'text-neutral-500' : 'text-neutral-400'
-              }`}
-            >
+            <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-neutral-500">
               Message
             </label>
             <textarea
@@ -137,11 +104,7 @@ export default function ContactForm({ isDark }: ContactFormProps) {
             <button
               type="submit"
               disabled={status === 'submitting' || status === 'success'}
-              className={`flex items-center gap-2 px-8 py-3 rounded-lg font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 ${
-                isDark
-                  ? 'bg-white text-neutral-900 hover:bg-neutral-200'
-                  : 'bg-neutral-900 text-white hover:bg-neutral-800'
-              }`}
+              className="flex items-center gap-2 px-8 py-3 rounded-lg font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 bg-white text-neutral-900 hover:bg-neutral-200"
             >
               {status === 'submitting' ? (
                 <>

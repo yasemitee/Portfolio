@@ -1,73 +1,88 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
-interface CustomCursorProps {
-  isDark: boolean;
-}
-
-export default function CustomCursor({ isDark }: CustomCursorProps) {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+export default function CustomCursor() {
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
-      const target = e.target as HTMLElement;
-      setIsHovering(
-        !!target.closest(
-          'a, button, [role="button"], input, textarea, .hover-target'
-        )
-      );
-      setIsVisible(true);
+    let rx = -100, ry = -100;
+    let visible = false;
+    let hovering = false;
+    let raf: number;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      rx = lerp(rx, mx, 0.15);
+      ry = lerp(ry, my, 0.15);
+      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+      raf = requestAnimationFrame(tick);
     };
 
-    window.addEventListener('mousemove', moveCursor);
-    return () => window.removeEventListener('mousemove', moveCursor);
-  }, [cursorX, cursorY]);
+    let mx = -100, my = -100;
+
+    const onMove = (e: PointerEvent) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+
+      if (!visible) {
+        visible = true;
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+
+      const target = e.target as HTMLElement;
+      const isHover = !!target.closest(
+        'a, button, [role="button"], input, textarea, .hover-target'
+      );
+      if (isHover !== hovering) {
+        hovering = isHover;
+        ring.style.width = ring.style.height = hovering ? '48px' : '32px';
+        ring.style.borderColor = hovering
+          ? 'rgba(129, 140, 248, 0.4)'
+          : 'rgba(129, 140, 248, 0.25)';
+      }
+    };
+
+    const onLeave = () => {
+      visible = false;
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
+    };
+
+    raf = requestAnimationFrame(tick);
+    window.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('mouseleave', onLeave);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('pointermove', onMove);
+      document.removeEventListener('mouseleave', onLeave);
+    };
+  }, []);
+
+  const base = 'hidden md:block fixed top-0 left-0 rounded-full pointer-events-none';
 
   return (
     <>
-      <motion.div
-        className={`hidden md:block fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[100] transition-opacity duration-300 ${
-          !isVisible ? 'opacity-0' : 'opacity-100'
-        } ${isDark ? 'bg-indigo-400' : 'bg-indigo-600'}`}
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
+      <div
+        ref={dotRef}
+        className={`${base} w-3 h-3 bg-indigo-400 z-[100] opacity-0`}
+        style={{ willChange: 'transform', transition: 'opacity .2s' }}
       />
-      <motion.div
-        className={`hidden md:block fixed top-0 left-0 border rounded-full pointer-events-none z-[99] transition-opacity duration-300 ${
-          !isVisible ? 'opacity-0' : 'opacity-100'
-        } ${isDark ? 'border-indigo-400/40' : 'border-indigo-600/40'}`}
+      <div
+        ref={ringRef}
+        className={`${base} w-8 h-8 border border-indigo-400/25 z-[99] opacity-0`}
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: '-50%',
-          translateY: '-50%',
+          willChange: 'transform',
+          transition: 'width .2s, height .2s, border-color .2s, opacity .2s',
         }}
-        animate={{
-          width: isHovering ? 48 : 32,
-          height: isHovering ? 48 : 32,
-          backgroundColor: isHovering
-            ? isDark
-              ? 'rgba(129, 140, 248, 0.1)'
-              : 'rgba(79, 70, 229, 0.05)'
-            : 'transparent',
-        }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       />
     </>
   );

@@ -11,20 +11,15 @@ interface Education {
 interface EducationItemProps {
   edu: Education;
   isLast: boolean;
-  isDark: boolean;
 }
 
 export default function EducationItem({
   edu,
   isLast,
-  isDark,
 }: EducationItemProps) {
   const accentClasses = {
     dotHover: 'group-hover:bg-emerald-500 group-hover:scale-125',
-    accentText: {
-      dark: 'text-emerald-300',
-      light: 'text-emerald-700',
-    },
+    accentText: 'text-emerald-300',
   };
 
   return (
@@ -35,7 +30,6 @@ export default function EducationItem({
       description={edu.desc}
       accentClasses={accentClasses}
       isLast={isLast}
-      isDark={isDark}
     />
   );
 }
