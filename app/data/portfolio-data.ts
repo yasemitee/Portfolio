@@ -79,6 +79,7 @@ export const DATA = {
       tags: ['Python', 'LLMs', 'Multi-Agent Systems', 'NLP'],
       link: 'https://github.com/yasemitee/negotiation-arena',
       icon: Bot,
+      image: '/projects/negotiation_arena.png',
     },
     {
       title: 'GamesToShare',
@@ -88,6 +89,7 @@ export const DATA = {
       link: 'https://github.com/yasemitee/gamestoshare',
       website: 'https://gamestoshare.com/',
       icon: Gamepad2,
+      image: '/projects/gamestoshare.png',
     },
     {
       title: 'SNM (Social Network for Music)',
@@ -96,6 +98,7 @@ export const DATA = {
       tags: ['Express.js', 'JWT', 'MongoDB', 'Bootstrap'],
       link: 'https://github.com/yasemitee/SNM',
       icon: Music,
+      image: '/projects/snm.png',
     },
     {
       title: 'University Portal',
@@ -104,6 +107,7 @@ export const DATA = {
       tags: ['PHP', 'PostgreSQL', 'Bootstrap'],
       link: 'https://github.com/yasemitee/Portale-universitario',
       icon: Database,
+      image: '/projects/university_portal.png',
     },
   ],
 } as const;
