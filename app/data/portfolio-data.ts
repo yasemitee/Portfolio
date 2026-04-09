@@ -8,6 +8,7 @@ import {
   Bot,
   Music,
 } from 'lucide-react';
+import { title } from 'process';
 
 export const DATA = {
   profile: {
@@ -92,9 +93,18 @@ export const DATA = {
       image: '/projects/gamestoshare.png',
     },
     {
+      title: 'Cloud Arcade Hub',
+      description:
+        'A Cloud-Native, microservices-based gaming platform focusing on high availability, dynamic scaling, and edge security. ',
+      tags: ['Angular', 'Node.js', 'Docker', 'Nginx'],
+      link: 'https://github.com/yasemitee/cloud-arcade-hub',
+      icon: Gamepad2,
+      image: '/projects/cloud-arcade-hub.png',
+    },
+    {
       title: 'SNM (Social Network for Music)',
       description:
-        'Playlist sharing platform that features a recommendation system based on user preferences and social interactions. Interacts directly with Spotify backend services.' ,
+        'Playlist sharing platform that features a recommendation system based on user preferences and social interactions. Interacts directly with Spotify backend services.',
       tags: ['Express.js', 'JWT', 'MongoDB', 'Bootstrap'],
       link: 'https://github.com/yasemitee/SNM',
       icon: Music,
